@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <section class="example-section">
+                                <mat-checkbox class="example-margin" [checked]="allComplete"
+                                [color]="task.color"
+                                [indeterminate]="someComplete()"
+                                (change)="setAll($event.checked)">Pune</mat-checkbox>
+                            </section>
+                            
+                            <section class="example-section">
+                                <span class="example-list-section">
+                                <mat-checkbox class="example-margin"
+                                                [checked]="allComplete"
+                                                [color]="task.color"
+                                                [indeterminate]="someComplete()"
+                                                (change)="setAll($event.checked)">
+                                    {{task.name}}
+                                </mat-checkbox>
+                                </span>
+                                <span class="example-list-section">
+                                <ul>
+                                    <li *ngFor="let subtask of task.subtasks">
+                                    <mat-checkbox [(ngModel)]="subtask.completed"
+                                                    [color]="subtask.color"
+                                                    (ngModelChange)="updateAllComplete()">
+                                        {{subtask.name}} <img src="./assets/images/01.jpeg" alt="Nature" id="image">
+                                    </mat-checkbox>
+                                    </li>
+                                </ul>
+                                </span>
+                            </section>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
