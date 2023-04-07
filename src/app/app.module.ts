@@ -13,13 +13,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MockComponent } from './mock/mock.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CheckboxTaskComponent } from './checkbox-task/checkbox-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LocationComponent,
-    MockComponent
+    MockComponent,
+    CheckboxTaskComponent
   ],
   imports: [
     BrowserModule,

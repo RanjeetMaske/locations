@@ -1,44 +1,17 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <section class="example-section">
-                                <mat-checkbox class="example-margin" [checked]="allComplete"
-                                [color]="task.color"
-                                [indeterminate]="someComplete()"
-                                (change)="setAll($event.checked)">Pune</mat-checkbox>
-                            </section>
-                            
-                            <section class="example-section">
-                                <span class="example-list-section">
-                                <mat-checkbox class="example-margin"
-                                                [checked]="allComplete"
-                                                [color]="task.color"
-                                                [indeterminate]="someComplete()"
-                                                (change)="setAll($event.checked)">
-                                    {{task.name}}
-                                </mat-checkbox>
-                                </span>
-                                <span class="example-list-section">
-                                <ul>
-                                    <li *ngFor="let subtask of task.subtasks">
-                                    <mat-checkbox [(ngModel)]="subtask.completed"
-                                                    [color]="subtask.color"
-                                                    (ngModelChange)="updateAllComplete()">
-                                        {{subtask.name}} <img src="./assets/images/01.jpeg" alt="Nature" id="image">
-                                    </mat-checkbox>
-                                    </li>
-                                </ul>
-                                </span>
-                            </section>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<ul *ngFor=" let k of locations">
+    <li><mat-checkbox color="primary"  (change)="selectOne($event)" >{{k.name}}</mat-checkbox></li>
+
+    <ul  *ngFor="let i of k.advertisers let z = index">
+        <li>
+            <mat-checkbox color="primary" 
+            [(ngModel)]="k.completed" (change)="selectOne($event)" >{{i.city.name}} </mat-checkbox>
+        </li>
+
+        <ul *ngFor="let n of i.area">
+            <li>
+                <mat-checkbox color="primary" [(ngModel)]="k.completed">{{n.area}}</mat-checkbox>
+            </li>
+        </ul>
+    </ul>
+    
+</ul>

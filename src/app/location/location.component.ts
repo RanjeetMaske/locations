@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
 
-export interface Task {
-  name: string;
-  completed: boolean;
-  color: ThemePalette;
-  subtasks?: Task[];
-}
 
 @Component({
   selector: 'app-location',
@@ -14,38 +7,225 @@ export interface Task {
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent {
-  task: Task =
+
+  locations = [
     {
-      name: 'Moshi',
-      completed: false,
-      color: 'primary',
-      subtasks:
-      [
-        {name: 'A1', completed: false, color: 'primary'},
-        {name: 'A2', completed: false, color: 'primary'},
-        {name: 'A3', completed: false, color: 'primary'},
-  ],
-};
-
-  allComplete: boolean = false;
-
-  updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-  }
-
-  someComplete(): boolean {
-    if (this.task.subtasks == null) {
-      return false;
+    "id": 1,
+    "name": "Gym",
+    "completed" : false,
+    "advertisers": [
+        
+        {
+            "city_id": 1,
+            "city": {
+                "id": 1,
+                "name": "Mumbai",completed:false
+            },
+            "area": [
+                {
+                    "area": "Challaghatta",
+                    completed:false
+                }
+            ]
+            },
+            {
+                "city_id": 2,
+                "city": {
+                    "id": 2,
+                    "name": "Delhi",completed:false
+                },
+                "area": [
+                    {
+                        "area": "Goregaon West",completed:false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Corporate Park",
+        "advertisers": [
+            {
+                "city_id": 1,
+                "city": {
+                    "id": 1,
+                    "name": "Pune",completed:false
+                },
+                "area": [
+                    {
+                    "area": "Balewadi",completed:false
+                    },
+                    {
+                    "area": "Kalyani Nagar",completed:false
+                    }
+                ]
+            },
+            {
+              "city_id": 2,
+              "city": {
+                  "id": 2,
+                  "name": "Mumbai"
+              },
+              "area": [
+                  {
+                      "area": "Shivaji Nagar"
+                  }
+              ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Co-Working",
+        "advertisers": [
+            {
+              "city_id": 1,
+              "city": {
+                  "id": 1,
+                  "name": "Pune",completed:false
+              },
+              "area": [
+                  {
+                      "area": "Baner",completed:false
+                  }
+              ]
+            },
+            {
+              "city_id": 2,
+              "city": {
+                  "id": 2,
+                  "name": "Mumbai",completed:false
+              },
+              "area": [
+                  {
+                      "area": "Koramangala",completed:false
+                  }
+              ]
+            },
+            {
+              "city_id": 3,
+              "city": {
+                  "id": 3,
+                  "name": "Delhi",completed:false
+              },
+              "area": [
+                  {
+                      "area": "Andheri East",completed:false
+                  }
+              ]
+            },
+            {
+              "city_id": 4,
+              "city": {
+                  "id": 4,
+                  "name": "Bengaluru"
+              },
+              "area": [
+                  {
+                      "area": "Connaught Place"
+                  },
+                  {
+                      "area": "Saket"
+                  }
+              ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Colleges",
+        "advertisers": [
+            {
+              "city_id": 1,
+              "city": {
+                  "id": 1,
+                  "name": "Pune",completed:false
+              },
+              "area": [
+                  {
+                      "area": "Baner",completed:false
+                  }
+              ]
+            },
+            {
+              "city_id": 2,
+              "city": {
+                  "id": 2,
+                  "name": "Mumbai"
+              },
+              "area": [
+                  {
+                      "area": "Ashok Nagar"
+                  }
+              ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Restaurants",
+        "advertisers": [
+            {
+              "city_id": 2,
+              "city": {
+                  "id": 2,
+                  "name": "Mumbai",completed:false
+              },
+              "area": [
+                  {
+                      "area": "Sanjay Nagar",completed:false
+                  }
+              ]
+            },
+            {
+              "city_id": 3,
+              "city": {
+                  "id": 3,
+                  "name": "Delhi",completed:false
+              },
+              "area": [
+                  {
+                      "area": "Andheri West",completed:false
+                  }
+              ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Offices",
+        "advertisers": [
+            {
+              "city_id": 3,
+              "city": {
+                  "id": 3,
+                  "name": "Delhi",completed:false
+              },
+              "area": [
+                  {
+                      "area": "Andheri East",completed:false
+                  }
+              ]
+            }
+        ]
     }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
-  }
-  
-  setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.task.subtasks == null) {
-      return;
-    }
-    this.task.subtasks.forEach(t => (t.completed = completed));
-  }
+]
 
+  selectOne(event:any){
+    if(event.checked){
+        this.locations[0].advertisers.map((city,index)=>{
+            if(event.source.id == index){
+                this.locations[0].advertisers[event.source.id].city.completed = true;
+            }
+        })
+    }
+    else{
+        this.locations[0].advertisers.map((city,index)=>{
+            if(event.source.id == index){
+                this.locations[0].advertisers[event.source.id].city.completed = false;
+            }
+        })
+    }
+}
 }

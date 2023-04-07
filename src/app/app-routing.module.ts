@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LocationComponent } from './location/location.component';
 import { HomeComponent } from './home/home.component';
 import { MockComponent } from './mock/mock.component';
+import { CheckboxTaskComponent } from './checkbox-task/checkbox-task.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:'mock',
     component:MockComponent
+  },
+  {
+    path:'checkboxTask',
+    component:CheckboxTaskComponent
   },
 ];
 

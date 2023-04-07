@@ -1,0 +1,28 @@
+        <ul *ngFor="let l of locations;">
+            <li>
+                <mat-checkbox color="warn" (change)="selectAll($event,l.name)"  [checked]="Completed" 
+                [indeterminate]="someComplete()"
+                (change)="setAll($event.checked)">
+                    <h4>{{l.name}}</h4>
+                </mat-checkbox>
+            </li>
+
+            <ul *ngFor="let c of l.advertisers;">
+                <li>
+                    <mat-checkbox color="primary" (change)="selectAll($event,c)"
+                                                        >
+                        <h5>{{c.city.name}}</h5>
+                    </mat-checkbox>
+                </li>
+
+                <!-- <ul *ngFor="let a of c.area;">
+                    <li>
+                        <mat-checkbox color="primary" (change)="selectAll($event,a)" >
+                            <h6>{{a.area}}</h6>
+                        </mat-checkbox>
+                    </li>
+                </ul>  -->
+            </ul>
+        </ul>
+
+

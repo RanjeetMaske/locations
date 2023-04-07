@@ -16,9 +16,10 @@ export class MockComponent {
     locations = [
     {
     "id": 1,
-    "completed" : false,
     "name": "Gym",
+    "completed" : false,
     "advertisers": [
+        
         {
             "city_id": 1,
             "city": {
@@ -27,7 +28,8 @@ export class MockComponent {
             },
             "area": [
                 {
-                    "area": "Challaghatta",completed:false
+                    "area": "Challaghatta",
+                    completed:false
                 }
             ]
             },
@@ -53,14 +55,14 @@ export class MockComponent {
                 "city_id": 1,
                 "city": {
                     "id": 1,
-                    "name": "Pune"
+                    "name": "Pune",completed:false
                 },
                 "area": [
                     {
-                    "area": "Balewadi"
+                    "area": "Balewadi",completed:false
                     },
                     {
-                    "area": "Kalyani Nagar"
+                    "area": "Kalyani Nagar",completed:false
                     }
                 ]
             },
@@ -86,11 +88,11 @@ export class MockComponent {
               "city_id": 1,
               "city": {
                   "id": 1,
-                  "name": "Pune"
+                  "name": "Pune",completed:false
               },
               "area": [
                   {
-                      "area": "Baner"
+                      "area": "Baner",completed:false
                   }
               ]
             },
@@ -98,11 +100,11 @@ export class MockComponent {
               "city_id": 2,
               "city": {
                   "id": 2,
-                  "name": "Mumbai"
+                  "name": "Mumbai",completed:false
               },
               "area": [
                   {
-                      "area": "Koramangala"
+                      "area": "Koramangala",completed:false
                   }
               ]
             },
@@ -110,11 +112,11 @@ export class MockComponent {
               "city_id": 3,
               "city": {
                   "id": 3,
-                  "name": "Delhi"
+                  "name": "Delhi",completed:false
               },
               "area": [
                   {
-                      "area": "Andheri East"
+                      "area": "Andheri East",completed:false
                   }
               ]
             },
@@ -143,11 +145,11 @@ export class MockComponent {
               "city_id": 1,
               "city": {
                   "id": 1,
-                  "name": "Pune"
+                  "name": "Pune",completed:false
               },
               "area": [
                   {
-                      "area": "Baner"
+                      "area": "Baner",completed:false
                   }
               ]
             },
@@ -173,11 +175,11 @@ export class MockComponent {
               "city_id": 2,
               "city": {
                   "id": 2,
-                  "name": "Mumbai"
+                  "name": "Mumbai",completed:false
               },
               "area": [
                   {
-                      "area": "Sanjay Nagar"
+                      "area": "Sanjay Nagar",completed:false
                   }
               ]
             },
@@ -185,11 +187,11 @@ export class MockComponent {
               "city_id": 3,
               "city": {
                   "id": 3,
-                  "name": "Delhi"
+                  "name": "Delhi",completed:false
               },
               "area": [
                   {
-                      "area": "Andheri West"
+                      "area": "Andheri West",completed:false
                   }
               ]
             }
@@ -203,33 +205,69 @@ export class MockComponent {
               "city_id": 3,
               "city": {
                   "id": 3,
-                  "name": "Delhi"
+                  "name": "Delhi",completed:false
               },
               "area": [
                   {
-                      "area": "Andheri East"
+                      "area": "Andheri East",completed:false
                   }
               ]
             }
         ]
     }
 ]
+    advertisers: any;
+    area: any;
 
 // allComplete: boolean = false;
 // area:boolean = false;
 
+
 selectAll(event:any){
     if(event.checked){
-        this.locations=this.locations.map((locations)=>{
-            locations.completed = true
-            return locations;
+        this.locations=this.locations.map((name)=>{
+            name.completed = true
+            return name;
         })
     }
     else{
-        this.locations=this.locations.map((locations)=>{
-            locations.completed = false
-            return locations;
+        this.locations=this.locations.map((name)=>{
+            name.completed = false
+            return name;
         })
     }
 }
+
+selectAllParents(event:any){
+    if(event.checked){
+        this.advertisers=this.advertisers.map((area: { completed: boolean; })=>{
+            area.completed = true
+            return area;
+        })
+    }
+    else{
+        this.advertisers=this.advertisers.map((area: { completed: boolean; })=>{
+            area.completed = false
+            return area;
+        })
+    }
+}
+
+// selectAllChild(event:any){
+//     if(event.checked){
+//         this.locations=this.area.map((name: { completed: boolean; })=>{
+//             name.completed = true
+//             return name;
+//         })
+//     }
+//     else{
+//         this.locations=this.area.map((name: { completed: boolean; })=>{
+//             name.completed = false
+//             return name;
+//         })
+//     }
+// }
+//////////////////////////////////////////////////
+
+
 }

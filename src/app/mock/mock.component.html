@@ -1,17 +1,23 @@
     <ul *ngFor=" let k of locations">
-        <li><mat-checkbox color="primary"  (change)="selectAll($event)" >{{k.name}}</mat-checkbox></li>
+        <li><mat-checkbox color="primary" (change)="selectAll($event)">{{k.name}}</mat-checkbox></li>
 
         <ul  *ngFor="let i of k.advertisers">
             <li>
                 <mat-checkbox color="primary" 
-                [(ngModel)]="k.completed" >{{i.city.name}} </mat-checkbox>
+                [(ngModel)]="k.completed"
+                (change)="selectAllParents($event)"
+                ><p >{{i.city.id}} <span>{{i.city.name}}</span></p> </mat-checkbox>
             </li>
 
             <ul *ngFor="let n of i.area">
                 <li>
-                    <mat-checkbox color="primary" [(ngModel)]="k.completed">{{n.area}}</mat-checkbox>
+                    <mat-checkbox color="primary" [(ngModel)]="k.completed"
+                    >{{n.area}}</mat-checkbox>
                 </li>
             </ul>
         </ul>
         
     </ul>
+
+
+    
